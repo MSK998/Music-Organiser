@@ -1,16 +1,14 @@
 package com.nextgate.assesment.datatypes;
 
-import java.util.Date;
-
 public class Singer {
 
     private String name;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String sex;
     private String company;
 
     // Constructor
-    public Singer(String name, Date dateOfBirth, String sex, String company){
+    public Singer(String name, String dateOfBirth, String sex, String company){
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -25,11 +23,11 @@ public class Singer {
         this.name = name;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -47,5 +45,15 @@ public class Singer {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Singer {" +
+                "name='" + name + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", sex='" + sex + '\'' +
+                ", company='" + company + '\'' +
+                '}';
     }
 }

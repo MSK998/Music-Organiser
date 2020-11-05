@@ -6,10 +6,10 @@ public class Album {
 
     private String singer;
     private String album;
-    private Date year;
+    private String year;
     private String company;
 
-    public Album(String singer, String album, Date year, String company) {
+    public Album(String singer, String album, String year, String company) {
         this.singer = singer;
         this.album = album;
         this.year = year;
@@ -32,11 +32,11 @@ public class Album {
         this.album = album;
     }
 
-    public Date getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -46,5 +46,15 @@ public class Album {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Album {" +
+                "singer='" + singer + '\'' +
+                ", album='" + album + '\'' +
+                ", year='" + year + '\'' +
+                ", company='" + company + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.nextgate.assesment;
 
+import com.nextgate.assesment.service.DataLoader;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,6 +13,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AssesmentApplication {
 
     public static void main(String[] args) {
+        try{
+            DataLoader.main(null);
+        }catch (Exception e){
+            System.out.println("Loader failed");
+
+        }
+
         SpringApplication.run(AssesmentApplication.class, args);
     }
 
