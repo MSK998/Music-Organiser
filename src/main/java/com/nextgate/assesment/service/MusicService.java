@@ -83,7 +83,42 @@ public class MusicService {
     }
 
     public List<Singer> searchSingers(String searchTerm){
-        return new ArrayList<Singer>();
+        try{
+            System.out.println(searchTerm.toUpperCase());
+            List<Singer> singers = new ArrayList<>();
+            Connection connection = DriverManager.getConnection(DATABASE_URL);
+            PreparedStatement searchAlbum = connection.prepareStatement("SELECT * FROM singers WHERE name=?");
+            searchAlbum.setString(1, searchTerm.toUpperCase());
+
+            ResultSet resultSet = searchAlbum.executeQuery();
+
+            if(resultSet.isBeforeFirst()){
+                while(resultSet.next()){
+                    Singer s = new Singer(
+                            resultSet.getString("name"),
+                            resultSet.getString("dob"),
+                            resultSet.getString("sex"),
+                            resultSet.getString("company"));
+
+                    singers.add(s);
+                }
+
+                resultSet.close();
+                searchAlbum.close();
+                connection.close();
+
+                return singers;
+            }
+
+            resultSet.close();
+            searchAlbum.close();
+            connection.close();
+
+            return null;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
     }
 
     public boolean addSinger(Singer singer){

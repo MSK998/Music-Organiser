@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +54,14 @@ public class MusicRestController {
     @GetMapping("/albums/search")
     public List<Album> albumSearch(@RequestParam("album") String album){
         return albumService.searchAlbums(album);
+    }
+
+    @PostMapping("/singers")
+    public ResponseEntity addSinger(@RequestBody Singer newSinger){
+        if(musicService.addSinger(newSinger)){
+            return ResponseEntity.status(201).build();
+        }
+        return ResponseEntity.status(400).build();
     }
 
     @PostMapping("/albums")
